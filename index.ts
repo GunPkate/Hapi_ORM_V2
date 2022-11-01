@@ -1,16 +1,12 @@
 import server from "./server";
 import intern from "./DB/Mysql/intern";
 import { local_dataSource } from "./DB/Mysql/local";
+import { userController } from "./controller/users/userController";
 
 const init = async () => {
+  const con = await local_dataSource();
   // await server.register(authen);
-  server.route({
-    method: "get",
-    path: "/",
-    handler: (request, h) => {
-      return "h";
-    },
-  });
+  server.route(userController(con));
   // await server.register({
   //   plugin: userlog,
   // });
@@ -22,5 +18,5 @@ const init = async () => {
 };
 
 // intern.initialize();
-local_dataSource();
+
 init().then();
