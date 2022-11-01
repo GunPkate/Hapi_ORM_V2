@@ -1,3 +1,4 @@
+import { genSalt, hash } from "bcrypt";
 const { name, internet, date, random } = require("faker");
 import { Condition, Repository, DataSource } from "typeorm";
 import { UserEntity, UserType } from "../Entities/user_entity";
@@ -9,13 +10,17 @@ export const mockUsers = async (source: DataSource, amount: number = 50) => {
     const lastName = name.lastName();
     const birthDate = date.past();
     const email = internet.email();
+    const salt = await genSalt();
+    const password = await hash("secret", salt);
     const type: UserType = random.arrayElement(["admin", "user"]);
     const u: Partial<UserEntity> = new UserEntity(
       firstName,
       lastName,
-      birthDate,
       email,
-      type
+      birthDate,
+      type,
+      salt,
+      password,
     );
     await userRepo.save<Partial<UserEntity>>(u);
   }

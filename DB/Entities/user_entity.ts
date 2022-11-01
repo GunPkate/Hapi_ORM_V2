@@ -16,7 +16,9 @@ export class UserEntity extends SharedProp {
     lastName: string,
     email: string,
     birthDate: Date,
-    type: UserType
+    type: UserType,
+    password: string,
+    salt: string
   ) {
     super();
     this.firstName = firstName;
@@ -24,6 +26,8 @@ export class UserEntity extends SharedProp {
     this.birthDate = birthDate;
     this.email = email;
     this.type = type;
+    this.password = password;
+    this.salt = salt;
   }
 
   @PrimaryGeneratedColumn()
@@ -38,6 +42,10 @@ export class UserEntity extends SharedProp {
   birthDate!: Date;
   @Column({ default: "user" })
   type!: UserType;
+  @Column({ nullable: false })
+  password!: string;
+  @Column({ nullable: false })
+  salt!: string;
   //   @Column({ default: UserType2.user, enum: UserType2, type: "enum" })
   //   type2!: UserType2;
 
