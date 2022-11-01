@@ -1,6 +1,6 @@
 import server from "./server";
 import intern from "./DB/Mysql/intern";
-import local from "./DB/Mysql/local";
+import { local_dataSource } from "./DB/Mysql/local";
 
 const init = async () => {
   // await server.register(authen);
@@ -22,5 +22,5 @@ const init = async () => {
 };
 
 // intern.initialize();
-local.initialize();
+local_dataSource();
 init().then();
