@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { PostEntity } from "./posts_entity";
+import { SharedProp } from "./sharedProp";
 
 export type UserType = "admin" | "user";
 
@@ -9,7 +10,8 @@ export type UserType = "admin" | "user";
 // }
 
 @Entity({ name: "users" })
-export class UserEntity {
+export class UserEntity extends SharedProp {
+  
   @PrimaryGeneratedColumn()
   id!: number;
   @Column({ nullable: false, name: "first_name" })

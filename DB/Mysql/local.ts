@@ -3,7 +3,7 @@ import { PostEntity } from "../Entities/posts_entity";
 import { UserEntity } from "../Entities/user_entity";
 import 'reflect-metadata'
 
-const local_dataSource: DataSource = new DataSource({
+const local_dataSource: DataSource =  new DataSource({
   type: "mysql",
   host: "localhost",
   port: 3306,

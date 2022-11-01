@@ -24,7 +24,7 @@
     "@types/mysql": "^2.15.21",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
-    "faker": "^6.6.6",
+    "faker": "^5.5.3",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
