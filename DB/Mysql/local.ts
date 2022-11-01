@@ -1,11 +1,12 @@
-import { mockUsers } from "./../mockDate/user";
+import { mockPosts } from "./../mockDate/posts";
+import { mockUsers } from "../mockDate/users";
 import { createConnection, DataSource } from "typeorm";
 import { PostEntity } from "../Entities/posts_entity";
 import { UserEntity } from "../Entities/user_entity";
 import "reflect-metadata";
 
 export const local_dataSource = async (): Promise<DataSource> => {
-  const mockfunc = [mockUsers];
+  const mockfunc = [mockUsers, mockPosts];
   console.log(mockfunc);
   const con: DataSource = await createConnection({
     type: "mysql",
